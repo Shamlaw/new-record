@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Record Room Data Viewer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fas fa-database me-2"></i>Record Room</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#taluk-data">Taluk Office Data</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#village-data">Village Data</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container-fluid">
+        <!-- Home Section -->
+        <section id="home" class="py-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <h1 class="display-4 fw-bold text-primary mb-4">Record Room Data Viewer</h1>
+                        <p class="lead text-muted mb-5">Access and explore administrative records from Taluk Offices and Village data with our user-friendly interface.</p>
+                        
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="card h-100 shadow-sm">
+                                    <div class="card-body text-center p-4">
+                                        <div class="feature-icon bg-primary bg-gradient d-inline-flex align-items-center justify-content-center rounded-3 mb-3">
+                                            <i class="fas fa-building text-white fa-2x"></i>
+                                        </div>
+                                        <h3 class="card-title">Taluk Office Data</h3>
+                                        <p class="card-text text-muted">Browse and search through Taluk Office records, files, and administrative documents.</p>
+                                        <a href="#taluk-data" class="btn btn-primary">View Data</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card h-100 shadow-sm">
+                                    <div class="card-body text-center p-4">
+                                        <div class="feature-icon bg-success bg-gradient d-inline-flex align-items-center justify-content-center rounded-3 mb-3">
+                                            <i class="fas fa-map-marked-alt text-white fa-2x"></i>
+                                        </div>
+                                        <h3 class="card-title">Village Data</h3>
+                                        <p class="card-text text-muted">Explore village-level records organized by district, taluk, and hobli codes.</p>
+                                        <a href="#village-data" class="btn btn-success">View Data</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Taluk Data Section -->
+        <section id="taluk-data" class="py-5 bg-light" style="display: none;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h2 class="fw-bold"><i class="fas fa-building me-2"></i>Taluk Office Data</h2>
+                            <button class="btn btn-outline-primary" onclick="showSection('home')">
+                                <i class="fas fa-home me-1"></i>Back to Home
+                            </button>
+                        </div>
+                        
+                        <!-- Search and Filter -->
+                        <div class="card shadow-sm mb-4">
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <label class="form-label">Search</label>
+                                        <input type="text" class="form-control" id="taluk-search" placeholder="Search by office name, file number...">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="form-label">Year</label>
+                                        <select class="form-select" id="taluk-year-filter">
+                                            <option value="">All Years</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="form-label">Office</label>
+                                        <select class="form-select" id="taluk-office-filter">
+                                            <option value="">All Offices</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2 d-flex align-items-end">
+                                        <button class="btn btn-primary w-100" onclick="searchTalukData()">
+                                            <i class="fas fa-search me-1"></i>Search
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Data Table -->
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead class="table-primary">
+                                            <tr>
+                                                <th>Sl. No</th>
+                                                <th>Office Name</th>
+                                                <th>File Number</th>
+                                                <th>Year</th>
+                                                <th>Category</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="taluk-data-table">
+                                            <tr>
+                                                <td colspan="6" class="text-center">
+                                                    <div class="spinner-border text-primary" role="status">
+                                                        <span class="visually-hidden">Loading...</span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <nav aria-label="Taluk data pagination">
+                                    <ul class="pagination justify-content-center" id="taluk-pagination">
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Village Data Section -->
+        <section id="village-data" class="py-5" style="display: none;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h2 class="fw-bold"><i class="fas fa-map-marked-alt me-2"></i>Village Data</h2>
+                            <button class="btn btn-outline-primary" onclick="showSection('home')">
+                                <i class="fas fa-home me-1"></i>Back to Home
+                            </button>
+                        </div>
+                        
+                        <!-- Search and Filter -->
+                        <div class="card shadow-sm mb-4">
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-md-3">
+                                        <label class="form-label">Search</label>
+                                        <input type="text" class="form-control" id="village-search" placeholder="Search...">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label class="form-label">District Code</label>
+                                        <select class="form-select" id="village-district-filter">
+                                            <option value="">All Districts</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label class="form-label">Taluk Code</label>
+                                        <select class="form-select" id="village-taluk-filter">
+                                            <option value="">All Taluks</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label class="form-label">Year</label>
+                                        <select class="form-select" id="village-year-filter">
+                                            <option value="">All Years</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-1 d-flex align-items-end">
+                                        <button class="btn btn-success w-100" onclick="searchVillageData()">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Data Table -->
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead class="table-success">
+                                            <tr>
+                                                <th>Sl. No</th>
+                                                <th>District</th>
+                                                <th>Taluk</th>
+                                                <th>Village</th>
+                                                <th>Office Name</th>
+                                                <th>Year</th>
+                                                <th>Category</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="village-data-table">
+                                            <tr>
+                                                <td colspan="8" class="text-center">
+                                                    <div class="spinner-border text-success" role="status">
+                                                        <span class="visually-hidden">Loading...</span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <nav aria-label="Village data pagination">
+                                    <ul class="pagination justify-content-center" id="village-pagination">
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2025 Record Room Data Viewer. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
