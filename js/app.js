@@ -952,7 +952,7 @@ function loadMockVillageData() {
             onclick: 'fnViewFile(24530361,100)',
             Office_Name: 'Taluk Office, ಮಾಲೂರು',
             File_No: null,
-            Volume_No: 'VOL-001',
+            Volume_No: null,
             Sub: null,
             Year: '1990-1991',
             file_id: 24530361,
