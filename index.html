@@ -167,31 +167,62 @@
                         <div class="card shadow-sm mb-4">
                             <div class="card-body">
                                 <div class="row g-3">
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
+                                        <label class="form-label">Category</label>
+                                        <select class="form-select" id="village-category-filter">
+                                            <option value="">All Categories</option>
+                                            <option value="File">File</option>
+                                            <option value="Register">Register</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2">
                                         <label class="form-label">Search</label>
                                         <input type="text" class="form-control" id="village-search" placeholder="Search...">
                                     </div>
                                     <div class="col-md-2">
-                                        <label class="form-label">District Code</label>
+                                        <label class="form-label">District</label>
                                         <select class="form-select" id="village-district-filter">
                                             <option value="">All Districts</option>
                                         </select>
                                     </div>
                                     <div class="col-md-2">
-                                        <label class="form-label">Taluk Code</label>
+                                        <label class="form-label">Taluk</label>
                                         <select class="form-select" id="village-taluk-filter">
                                             <option value="">All Taluks</option>
                                         </select>
                                     </div>
+                                    <div class="col-md-2">
+                                        <label class="form-label">Hobli</label>
+                                        <select class="form-select" id="village-hobli-filter">
+                                            <option value="">All Hoblis</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label class="form-label">Village</label>
+                                        <select class="form-select" id="village-village-filter">
+                                            <option value="">All Villages</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row g-3 mt-2">
                                     <div class="col-md-2">
                                         <label class="form-label">Year</label>
                                         <select class="form-select" id="village-year-filter">
                                             <option value="">All Years</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-1 d-flex align-items-end">
+                                    <div class="col-md-2">
+                                        <label class="form-label">Records per page</label>
+                                        <select class="form-select" id="village-per-page">
+                                            <option value="50">50</option>
+                                            <option value="100">100</option>
+                                            <option value="250">250</option>
+                                            <option value="500">500</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2 d-flex align-items-end">
                                         <button class="btn btn-success w-100" onclick="searchVillageData()">
-                                            <i class="fas fa-search"></i>
+                                            <i class="fas fa-search me-1"></i>Search
                                         </button>
                                     </div>
                                 </div>
@@ -203,13 +234,17 @@
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-hover">
-                                        <thead class="table-success">
+                                        <thead class="table-success" id="village-table-header">
                                             <tr>
                                                 <th>Sl. No</th>
                                                 <th>District</th>
                                                 <th>Taluk</th>
+                                                <th>Hobli</th>
                                                 <th>Village</th>
                                                 <th>Office Name</th>
+                                                <th>File Number</th>
+                                                <th>Volume Number</th>
+                                                <th>Sub</th>
                                                 <th>Year</th>
                                                 <th>Category</th>
                                                 <th>Actions</th>
@@ -217,7 +252,7 @@
                                         </thead>
                                         <tbody id="village-data-table">
                                             <tr>
-                                                <td colspan="8" class="text-center">
+                                                <td colspan="12" class="text-center">
                                                     <div class="spinner-border text-success" role="status">
                                                         <span class="visually-hidden">Loading...</span>
                                                     </div>
