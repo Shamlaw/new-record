@@ -2,6 +2,8 @@
 
 A mobile-friendly web application for viewing and searching administrative records from Taluk Offices and Village data.
 
+🌐 **Live Demo**: [https://shamlaw.github.io/new-record/](https://shamlaw.github.io/new-record/)
+
 ## Features
 
 - **Responsive Design**: Mobile-friendly interface that works on all devices
