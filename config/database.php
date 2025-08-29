@@ -1,9 +1,9 @@
 <?php
 // Database configuration
 return [
-    'host' => 'localhost',
-    'username' => 'your_username',
-    'password' => 'your_password',
+    'host' => 'rccms.in',
+    'username' => 'rccmsin_record_user',
+    'password' => 'Mirha*7861',
     'database' => 'rccmsin_record_room',
     'charset' => 'utf8mb4',
     'port' => 3306
