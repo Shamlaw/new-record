@@ -181,7 +181,7 @@ async function loadVillageData() {
         updateTableHeaders();
         
         // Display data
-        renderVillageData(villageData);
+        displayVillageDataFromServer();
         
     } catch (error) {
         console.error('Error loading village data:', error);
@@ -979,8 +979,67 @@ function loadMockVillageData() {
             office_code: 100,
             File_Name: 'test_file_2.json',
             No_OF_Records_Extracted: 1
+        },
+        {
+            Sl_No: 3,
+            district_code: 19,
+            taluk_code: 9,
+            hobli_code: 1,
+            village_code: 74,
+            'data-category': 'Register',
+            'data-year': '1992-1993',
+            'data-ofcname': 'Taluk Office, ಮಾಲೂರು',
+            onclick: 'fnViewFile(24530363,100)',
+            Office_Name: 'Taluk Office, ಮಾಲೂರು',
+            File_No: null,
+            Volume_No: 'VOL-001',
+            Sub: null,
+            Year: '1992-1993',
+            file_id: 24530363,
+            office_code: 100,
+            File_Name: 'register_vol_1.json',
+            No_OF_Records_Extracted: 1
+        },
+        {
+            Sl_No: 4,
+            district_code: 19,
+            taluk_code: 9,
+            hobli_code: 1,
+            village_code: 75,
+            'data-category': 'File',
+            'data-year': '1993-1994',
+            'data-ofcname': 'Taluk Office, ಮಾಲೂರು',
+            onclick: 'fnViewFile(24530364,100)',
+            Office_Name: 'Taluk Office, ಮಾಲೂರು',
+            File_No: 'FILE-002-1993',
+            Volume_No: null,
+            Sub: 'Revenue Records',
+            Year: '1993-1994',
+            file_id: 24530364,
+            office_code: 100,
+            File_Name: 'revenue_records.json',
+            No_OF_Records_Extracted: 1
+        },
+        {
+            Sl_No: 5,
+            district_code: 19,
+            taluk_code: 9,
+            hobli_code: 1,
+            village_code: 76,
+            'data-category': 'Register',
+            'data-year': '1994-1995',
+            'data-ofcname': 'Taluk Office, ಮಾಲೂರು',
+            onclick: 'fnViewFile(24530365,100)',
+            Office_Name: 'Taluk Office, ಮಾಲೂರು',
+            File_No: null,
+            Volume_No: 'VOL-002',
+            Sub: null,
+            Year: '1994-1995',
+            file_id: 24530365,
+            office_code: 100,
+            File_Name: 'register_vol_2.json',
+            No_OF_Records_Extracted: 1
         }
-        // Add more mock data as needed
     ];
     
     // Mock village_code data
@@ -1006,6 +1065,39 @@ function loadMockVillageData() {
             HobliName: 'ಮಾಲೂರು ಹೊಬ್ಳಿ',
             VillageCode: 73,
             VillageName: 'ಟೆಸ್ಟ್ ವಿಲೇಜ್'
+        },
+        {
+            Sl_No: 3,
+            DistrictCode: 19,
+            DistrictName: 'ಮಾಲೂರು',
+            TalukCode: 9,
+            TalukName: 'ಮಾಲೂರು ತಾಲೂಕು',
+            HobliCode: 1,
+            HobliName: 'ಮಾಲೂರು ಹೊಬ್ಳಿ',
+            VillageCode: 74,
+            VillageName: 'ವಿಲೇಜ್ ಥ್ರೀ'
+        },
+        {
+            Sl_No: 4,
+            DistrictCode: 19,
+            DistrictName: 'ಮಾಲೂರು',
+            TalukCode: 9,
+            TalukName: 'ಮಾಲೂರು ತಾಲೂಕು',
+            HobliCode: 1,
+            HobliName: 'ಮಾಲೂರು ಹೊಬ್ಳಿ',
+            VillageCode: 75,
+            VillageName: 'ವಿಲೇಜ್ ಫೋರ್'
+        },
+        {
+            Sl_No: 5,
+            DistrictCode: 19,
+            DistrictName: 'ಮಾಲೂರು',
+            TalukCode: 9,
+            TalukName: 'ಮಾಲೂರು ತಾಲೂಕು',
+            HobliCode: 1,
+            HobliName: 'ಮಾಲೂರು ಹೊಬ್ಳಿ',
+            VillageCode: 76,
+            VillageName: 'ವಿಲೇಜ್ ಫೈವ್'
         }
     ];
     
