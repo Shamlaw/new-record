@@ -734,10 +734,13 @@ function populateYearOptions() {
     yearSelect.innerHTML = '<option value="">All Years</option>' + 
         years.map(year => `<option value="${year}">${year}</option>`).join('');
 }
-    const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+// Update pagination (for client-side pagination)
+function updatePagination(paginationId, totalItems, displayFunction) {
+    const clientTotalPages = Math.ceil(totalItems / itemsPerPage);
     const pagination = document.getElementById(paginationId);
     
-    if (totalPages <= 1) {
+    if (clientTotalPages <= 1) {
         pagination.innerHTML = '';
         return;
     }
@@ -757,7 +760,7 @@ function populateYearOptions() {
     
     // Page numbers
     const startPage = Math.max(1, currentPage - 2);
-    const endPage = Math.min(totalPages, currentPage + 2);
+    const endPage = Math.min(clientTotalPages, currentPage + 2);
     
     for (let i = startPage; i <= endPage; i++) {
         paginationHTML += `
@@ -768,7 +771,7 @@ function populateYearOptions() {
     }
     
     // Next button
-    if (currentPage < totalPages) {
+    if (currentPage < clientTotalPages) {
         paginationHTML += `
             <li class="page-item">
                 <a class="page-link" href="#" onclick="changePage(${currentPage + 1}, '${displayFunction.name}')">
