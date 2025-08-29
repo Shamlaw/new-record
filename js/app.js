@@ -181,7 +181,7 @@ async function loadVillageData() {
         updateTableHeaders();
         
         // Display data
-        displayVillageDataFromServer();
+        renderVillageData(villageData);
         
     } catch (error) {
         console.error('Error loading village data:', error);
