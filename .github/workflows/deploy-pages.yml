@@ -41,8 +41,9 @@ jobs:
           cp -r css build/
           cp -r js build/
           
-          # Copy README for reference
+          # Copy documentation
           cp README.md build/
+          cp GITHUB_PAGES.md build/
           
           echo "Static site built successfully"
           ls -la build/
